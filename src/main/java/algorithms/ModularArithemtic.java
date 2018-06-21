@@ -1,4 +1,4 @@
-package algorithmsInJava;
+package algorithms;
 
 
 public class ModularArithemtic {

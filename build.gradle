@@ -36,6 +36,8 @@ dependencies {
     compile 'org.apache.commons:commons-csv:1.+'
     compile 'com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.+'
     compile 'io.airlift:airline:0.+'
+    compile 'com.google.protobuf:protobuf-java:3.5.1'
+    compile 'org.json:json:20180130'
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.+'
@@ -53,6 +55,7 @@ repositories {
 targetCompatibility = 1.8
 sourceCompatibility = 1.8
 
+
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
@@ -63,4 +66,23 @@ configurations.all {
               details.useVersion '2.+'
           }
       }
+}
+
+import org.apache.tools.ant.filters.ReplaceTokens
+
+processResources {
+    def profile = project.findProperty('profile');
+    if (profile == null || profile.isEmpty()) {
+        profile = "development";
+    }
+    
+    with copySpec {
+        from "${projectDir}/config-development.properties"
+        
+        filesMatching('*.properties') {
+            // replace @var@ with specific value
+            filter( ReplaceTokens, tokens:['app.name' : project.name, 'app.version':project.version], 'app.stage':profile)
+        }
+        rename 'config-.*\\.properties', "config.properties"
+    }
 }

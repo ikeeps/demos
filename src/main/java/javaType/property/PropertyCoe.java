@@ -1,6 +1,6 @@
 package javaType.property;
 
-import foo.ideas.tx.property_strategy.EffectStrategy;
+import javaType.property_strategy.EffectStrategy;
 
 public class PropertyCoe {
   private int value;

@@ -13,7 +13,6 @@ import com.google.protobuf.Descriptors.FieldDescriptor.JavaType;
 import com.google.protobuf.GeneratedMessage;
 import com.google.protobuf.Message;
 import com.google.protobuf.Message.Builder;
-import com.google.protobuf.WireFormat.FieldType;
 
 public class ProtoBufUtil {
   public static StringBuilder toJSON(GeneratedMessage message) {
@@ -152,13 +151,6 @@ public class ProtoBufUtil {
   
   public static void main(String[] args) throws JSONException {
     String for_names = "{playerName:'asdf',accountName:'adsf'}";
-    JSONObject obj_for_names = new JSONObject(for_names);
     // Names ins_for_names = Names.getDefaultInstance();
-    System.out.println(create(ins_for_names, obj_for_names).toString());
-    String for_names_col = "{names:[{playerName:'asdf',accountName:'asdf'},{playerName:'asdf1',accountName:'asdf1'}]}";
-    JSONObject ins_for_names_col = new JSONObject(for_names_col);
-    System.out.println(create(NamesCollection.getDefaultInstance(), ins_for_names_col).toString());
-    System.out.println(GiftMails.getDescriptor().findFieldByName("names").getFullName());
-    System.out.println(GiftMails.getDescriptor().findFieldByName("gitfs").getFullName());
   }
 }
