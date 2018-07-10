@@ -1,14 +1,17 @@
 package javaType;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 
 public class DateTimeUtils {
   /**
-   * 
+   * @deprecated
    * @param since
    * @return 8 time point from the previous midnight of since to the 7th day's midnight  
-   * 
+   * @see {@link LocalDate#atTime(int, int)}
    */
+  @Deprecated
   public static long[] getMidNightPoints(long since, int days) {
     Calendar calendar = Calendar.getInstance();
     calendar.setTimeInMillis(since);
@@ -25,6 +28,15 @@ public class DateTimeUtils {
     return time_points;
   }
   
+  /**
+   * @deprecated
+   * @param now
+   * @param day
+   * @return
+   * 
+   * @see {@link LocalDateTime#plusDays(long)}
+   */
+  @Deprecated
   public static long getDayAfter(long now, int day) {
     Calendar calendar = Calendar.getInstance();
     calendar.setTimeInMillis(now);
