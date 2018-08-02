@@ -13,7 +13,7 @@ dependencyManagement {
   }
 }
 
-mainClassName="javaType.LongBitOps"
+mainClassName="library.BugsnagNotStop"
 
 dependencies {
     compile 'com.google.guava:guava:23.+'
