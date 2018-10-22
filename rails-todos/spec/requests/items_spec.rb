@@ -1,12 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe 'Items API', type: :request do
-  let!(:todo) { create(:todo) }
+  let!(:user) { create(:user) }
+  let!(:todo) { create(:todo, created_by: user.id) }
   let(:todo_id) { todo.id }
   let!(:items) { create_list(:item, 10, todo_id: todo_id) }
   let(:item_id) { items.first.id }
 
-  let(:headers) { {} }
+  let(:headers) { valid_headers }
   
   describe 'GET /todos/:todo_id/items' do
     before { get "/todos/#{todo_id}/items" , params: {}, headers: headers}
@@ -47,7 +48,7 @@ RSpec.describe 'Items API', type: :request do
   end
 
   describe 'POST /todos/:todo_id/items' do
-    let(:valid_attributes) { { name: 'Learn Elm', done: false } }
+    let(:valid_attributes) { { name: 'Learn Elm', done: false }.to_json }
     context 'when the request is valid' do
       before { post "/todos/#{todo_id}/items", params: valid_attributes, headers: headers }
       it 'creates a item' do
@@ -58,7 +59,7 @@ RSpec.describe 'Items API', type: :request do
       end
     end
     context 'when the request is invalid' do
-      before { post "/todos/#{todo_id}/items", params: { name: nil }, headers: headers }
+      before { post "/todos/#{todo_id}/items", params: { name: nil }.to_json, headers: headers }
       it 'return status code 422' do
         expect(response).to have_http_status(422)
       end
@@ -69,7 +70,7 @@ RSpec.describe 'Items API', type: :request do
   end
 
   describe 'PUT /todos/:todo_id/items/:id' do
-    let(:valid_attributes) { { name: 'shopping', done: true } }
+    let(:valid_attributes) { { name: 'shopping', done: true }.to_json }
     context 'when the request is valid' do
       before { put "/todos/#{todo_id}/items/#{item_id}", params: valid_attributes, headers: headers }
       it 'updates the record' do

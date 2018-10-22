@@ -72,6 +72,7 @@ RSpec.configure do |config|
   end
 
   config.include RequestHelper
+  config.include ControllerHelper
 end
 
 Shoulda::Matchers.configure do |config|
