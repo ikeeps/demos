@@ -1,4 +1,6 @@
-class ItemsController < ApplicationController
+module V1
+
+class V1::ItemsController < ApplicationController
   before_action :set_todo
   before_action :set_item, only: [:show, :update, :destroy]
   def index

@@ -1,7 +1,7 @@
-class TodosController < ApplicationController
+class V1::TodosController < ApplicationController
   before_action :set_todo, only: [:show, :update, :destroy]
   def index
-    todos = @current_user.todos.all
+    todos = @current_user.todos.paginate(page: params[:page])
     json_response(todos)
   end
 

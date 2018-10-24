@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
-  resources :todos do
-    resources :items
+
+  scope module: :v2, constraints: ApiVersion.new(:v2, false) do
+    resources :todos, only: :index
+  end
+
+  scope module: :v1, constraints: ApiVersion.new(:v1, true) do
+
+    resources :todos do
+      resources :items
+    end
+
   end
 
   post "/auth/login", to: "authentication#authenticate"
