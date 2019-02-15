@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subject: MyString
+  aasm_state: MyString
+  position: 1
+
+two:
+  subject: MyString
+  aasm_state: MyString
+  position: 1
