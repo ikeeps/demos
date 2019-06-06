@@ -19,7 +19,7 @@ public class IdGeneratorTask2 implements Runnable {
 			throw new IllegalStateException(e1);
 		}
 		Statistics statistics = new Statistics(Integer.toString(num));
-		final int total = 100 * 10000;
+		final int total = 10 * 10000;
 		try(Connection con = DriverManager.getConnection("jdbc:mysql://192.168.99.31:3306/demo", "sammy", "12345678");
 			PreparedStatement pstmt = con.prepareStatement("INSERT INTO demo.base62id (id, create_at, num, thread) VALUES(?, ?, ?, ?)");) {
 			int cur = 0;
