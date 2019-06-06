@@ -1,0 +1,18 @@
+dependencies {
+    compile 'org.apache.commons:commons-lang3:3.+'
+    compile 'commons-io:commons-io:2.+'
+    compile 'commons-codec:commons-codec:1.+'
+    compile 'commons-dbutils:commons-dbutils:1.+'
+    compile 'commons-validator:commons-validator:1.+'
+    compile 'org.apache.commons:commons-csv:1.+'
+    compile 'org.apache.commons:commons-compress:1.18'    
+    
+    compile 'com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.+'
+    compile 'com.orangesignal:orangesignal-csv:2.2.1'
+    compile 'io.reactivex.rxjava2:rxjava:2.+'
+    compile 'com.google.guava:guava:23.+'
+    compile 'com.bugsnag:bugsnag:3.+'
+
+    compile 'org.slf4j:slf4j-api:1.7.5'
+    compile 'org.slf4j:slf4j-log4j12:1.7.5'
+}

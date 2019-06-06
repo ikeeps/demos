@@ -30,8 +30,8 @@ import com.ikee.batch.dynamodb.infrastructure.BuyRecordReader;
  * @date 2018/07/31
  *
  */
-@Configuration
-public class CsvConfiguration {
+//@Configuration
+public class JsonDynamodbConfiguration {
 
   @Autowired
   StepBuilderFactory stepBuilderFactory;

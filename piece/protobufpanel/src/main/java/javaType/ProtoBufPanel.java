@@ -16,7 +16,7 @@ public class ProtoBufPanel extends JPanel {
   public ProtoBufPanel(GeneratedMessage message) {
     super(new SpringLayout());
     Map<FieldDescriptor, Object> allFields = message.getAllFields();
-    for(Entry<FieldDescriptor, Object> key : allFields.entrySet()) {
+	for (Entry<FieldDescriptor, Object> key : allFields.entrySet()) {
       JLabel l = new JLabel(key.getKey().getName() + ":", JLabel.TRAILING);
       add(l);
       JTextField t = new JTextField(10);

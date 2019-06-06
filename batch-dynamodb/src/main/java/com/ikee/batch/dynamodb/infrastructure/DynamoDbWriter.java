@@ -19,8 +19,12 @@ import com.amazonaws.services.dynamodbv2.model.WriteRequest;
 public class DynamoDbWriter implements ItemWriter<String> {
   private static Logger log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
   private static final int MAX_RETRIES = 5;
+  
   DynamoDB dynamodb;
   String tableName;
+  int count = 0;
+  int maxCount = 5;
+  long last5End = System.currentTimeMillis();
 
   public DynamoDbWriter(DynamoDB dynamodb, String tableName) {
     this.dynamodb = dynamodb;
@@ -56,7 +60,15 @@ public class DynamoDbWriter implements ItemWriter<String> {
       log.info("Retrieving the unprocessed items. retry times [ + {} + ]", attempts);
     }
 
-    Thread.sleep(1000);
+    count++;
+    if (count >= maxCount) {
+      count = 0;
+      long delta = System.currentTimeMillis() - last5End;
+      if (delta < 1000) {
+        Thread.sleep(1200 - delta);
+      }
+      last5End = System.currentTimeMillis();
+    }
   }
 
   private void logCapacity(BatchWriteItemOutcome batchWriteItem) {

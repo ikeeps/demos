@@ -21,7 +21,7 @@ import com.ikee.batch.dynamodb.entity.Person;
 import com.ikee.batch.dynamodb.infrastructure.JobCompletionNotificationListener;
 import com.ikee.batch.dynamodb.infrastructure.PersonItemProcessor;
 
-public class BatchConfiguration {
+public class CsvJdbcConfiguration {
 
     @Autowired
     public JobBuilderFactory jobBuilderFactory;
