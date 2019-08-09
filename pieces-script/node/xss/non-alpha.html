@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Non alpha Non digit</title>
+</head>
+<body>
+
+    
+  <SCRIPT/XSS SRC="./xss.js"></SCRIPT>
+  <SCRIPT/SRC="./xss.js"></SCRIPT>
+  
+  <p>
+    failed on:
+    <ul>
+      <li>chrome 75.0.3770.100</li>
+      <li>firefox 67.0</li>
+      <li>ie 11.557.17763.0</li>
+    </ul>
+  </p>
+  <IMG SRC=" &#14; javascript:alert('XSS');">
+<!--    <BODY onload!#$%&()*~+-_.,:;?@[/|\]^`=console.log("XSS")> -->
+  <BODY onload!#$%&()*~+-_.,:;?@[=alert("XSS")></BODY>
+  
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>IFrame</title>
+</head>
+<body>
+  <IFRAME SRC="javascript:alert('XSS');"></IFRAME>
+  <IFRAME SRC=# onmouseover="alert(document.cookie)"></IFRAME>
+  <FRAMESET><FRAME SRC="javascript:alert('XSS');"></FRAMESET>
+</body>
+</html>
