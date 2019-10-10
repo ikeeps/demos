@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="euc-jp">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Different Encoding</title>
+</head>
+<body>
+  <div>成長しても低コスト。ずっと使えるネットショップ。</div>
+  <div id="utf8"></div>
+  <div id="unicode"></div>
+  <div id="utf8-char"></div>
+  <script src="./insert-utf8.js"></script>
+  <script src="./insert-unicode.js"></script>
+  <script src="./insert-utf8-char.js" charset="utf-8"></script>
+  <form name="frm" accept="#">
+    <div><label for="name">name:</label><input type="text" name="name"></div>
+    <div><label for="address">address:</label><input type="text" name="address"></div>
+    <div><label for="email">email</label><input type="email" name="email"></div>
+    
+    <button type="submit">submit</button>
+  </form>
+  
+  <script>
+    contx = {
+      'user': {
+        'id': '19'
+      },
+      'cart': {
+        'items': [
+          {
+            'id':    '00001',
+            'page':  'http://example.com/items/00001',
+            'name':  '売れ筋No.1商品',
+            'image': 'http://example.com/items/00001/image.jpg',
+            'price': '1000',
+            'count': '3',
+            'stock': '10'
+          }, {
+            'id':    '00005',
+            'page':  'http://example.com/items/00005',
+            'name':  '売れ筋No.5商品',
+            'image': 'http://example.com/items/00005/image.jpg?resolution=3',
+            'price': '500',
+            'count': '5',
+            'stock': '2'
+          }
+        ]
+      }
+    };
+  </script>
+  
+  <script src="url.tpl.js">
+  </script>
+    
+</body>
+</html>
