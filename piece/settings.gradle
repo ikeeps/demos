@@ -8,4 +8,4 @@
  */
 
 rootProject.name = 'demos'
-include 'luid', 'protobufpanel', 'basic', 'commons', 'commandlines', 'mysqls', 'restclient'
+include 'luid', 'protobufpanel', 'basic', 'commons', 'commandlines', 'mysqls', 'restclient', 'aws'
