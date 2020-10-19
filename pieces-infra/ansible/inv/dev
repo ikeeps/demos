@@ -1,0 +1,2 @@
+[webservers]
+cr-ebisumart.local ansible_connection=docker

@@ -1,0 +1,8 @@
+docker run --rm httpd:2.4 cat /usr/local/apache2/conf/httpd.conf > my-httpd.conf
+docker build --rm -t my-apache2 .
+docker run -dit --name my-running-app -p 8080:80 my-apache2
+
+docker stop ${container-id}
+docker rm ${container-id}
+docker image rm ${image-id}
+docker stop CONTAINER_ID | xargs docker rm

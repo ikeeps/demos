@@ -1,0 +1,10 @@
+---
+- name: test docker
+  hosts: webservers
+
+  tasks:
+    - name: hello world
+      copy:
+        content: 'hello docker\n'
+        dest: /tmp/testfile.txt
+    
