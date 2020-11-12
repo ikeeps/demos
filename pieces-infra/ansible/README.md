@@ -1,5 +1,5 @@
 # run
-docker run -dit --name cr-ebisumart.local centos:centos7
+docker run -dit --name cr-ebisumart.local ansible/ansible:centos7
 ansible-playbook test-docker/playbook.yml -i inv/dev
 
 # result
